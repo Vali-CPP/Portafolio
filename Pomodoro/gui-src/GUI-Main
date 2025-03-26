@@ -1,0 +1,106 @@
+#This file is the GUI version of the Pomodoro
+
+
+#! /bin/python3
+
+import time, os, sys
+import pygame as pg
+from Funciones import *
+from Clases import *
+
+pg.mixer.init()
+
+"""
+            TODO
+            - Investigar como integrar una base de datos rudimentaria en un CSV para asi mantener un track de la cantidad de tiempo que se ha trabajado
+            diariamente.
+            - Agregar una interfaz grafica de usuario para manejar absolutamente todo, creo que este es uno de los pasos mas importante, mas adelante podremos agregar la base de datos.
+            - Modificar la carpeta de seleccion de audio para que cree una carpeta del sistema dentro de la carpeta de audio del usuario y asi el usuario tengo una forma comoda de agregar su propia musica al pomodoro, o lo mismo agregar una opcion donde el usuario pueda ingresar la direcciondonde este localizada la musica que desea agregar y asi no tener que crear la carpeta a fuerzas.
+"""
+
+
+
+correr = True
+sonido_a_reproducir = None
+pomo_inicializado = False
+pausa = False
+
+while correr:
+
+    try:
+
+        #Etapa de inicializacion del programa.
+        if pomo_inicializado == False:
+
+            choose = menu_inicial()
+
+            if choose == 1:
+
+                limpiar_pantalla()
+
+                pomo_actual = crear_pomo()
+                pomo_actual.definir_ciclos()
+
+                sonido_a_reproducir = Sonido(elegir_ruido())
+
+                pomo_inicializado = True
+
+            elif choose == 2:
+
+                correr = False
+
+        else:
+        #Etapa de ejecucion del programa.
+            while pomo_actual.get_ciclo_actual():
+
+                ciclos = pomo_actual.get_ciclo_actual()
+
+                if  ciclos[0] == "Concentracion":
+                    sonido_a_reproducir.reproducir()
+                elif ciclos[0] == "Descanso":
+                    sonido_a_reproducir.pausar()
+
+                if pausa == True:
+                    pomo_actual.temporizador(ciclos[0], pomo_actual.get_tiempo_restante_actual())
+                else:
+                    pomo_actual.temporizador(ciclos[0], ciclos[1])
+
+                pomo_actual.pasar_ciclo()
+                pomo_actual.sonar_alarma()
+                limpiar_pantalla()
+                print("\nEtapa terminada, pasando a la siguiente etapa.")
+                time.sleep(3)
+                pausa = False
+
+                limpiar_pantalla()
+
+
+    except KeyboardInterrupt:
+
+        print("/r")
+        limpiar_pantalla()
+
+        sonido_a_reproducir.pausar()
+
+        decision = validacion_int("Pomodoro pausado, que deseas hacer?:\n1)Terminar el Pomodoro\n2)Cambiar el sonido de fondo sin reiniciar el Pomodoro\n3)Reiniciar el Pomodoro.\n4)Reanudar el pomodoro\n:", "Numero invalido", 0, 4)
+
+
+        if decision == 1: #Cierra el pomodoro.
+            correr = False
+
+        elif decision == 2: #Pausa el pomodoro, cambia el sonido y deja una bandera para que cuando se reinicie el pomodoro se reinicie desde el momento en que lo dejaste
+            sonido_a_reproducir.cambiar(elegir_ruido())
+            pausa = True
+
+        elif decision == 3: #Reiniciamos el Pomodoro.
+            pomo_inicializado = False
+            pausa = False
+
+        elif decision == 4:
+            pausa = True
+
+        limpiar_pantalla()
+
+pausa = False
+pomo_inicializado = False
+limpiar_pantalla()
