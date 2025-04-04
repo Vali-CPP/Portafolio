@@ -1,0 +1,15 @@
+##[pylyzer] failed /home/validev/Documents/Programacion/Vali/Portafolio/Pomodoro/cli-src/Funciones.py 1743183587 2165
+.os: Never
+.time: Never
+
+.pg = pyimport "pygame"
+.pygame = pyimport "pygame"
+
+.DUMMY = pyimport "Clases"
+.Clases = pyimport "Clases"
+.direccion_script: Never
+.limpiar_pantalla: () -> NoneType
+.validacion_int: |R <: Float, R :> Int|(mensaje_peticion: Str, mensaje_de_error: Obj := Obj, limite_inferior: R := R and R, limite_superior: R := R) -> NoneType
+.menu_inicial: () -> NoneType
+.elegir_ruido: () -> Never
+.crear_pomo: () -> Never

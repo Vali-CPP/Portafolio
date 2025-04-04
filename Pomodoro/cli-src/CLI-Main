@@ -5,8 +5,6 @@ import pygame as pg
 from Funciones import *
 from Clases import *
 
-pg.mixer.init()
-
 """
             TODO
             - Investigar como integrar una base de datos rudimentaria en un CSV para asi mantener un track de la cantidad de tiempo que se ha trabajado

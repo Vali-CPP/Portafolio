@@ -1,0 +1,32 @@
+##[pylyzer] failed /home/validev/Documents/Programacion/Vali/Portafolio/Pomodoro/cli-src/Clases.py 1743032321 2011
+.time: Never
+.os: Never
+
+.pg = pyimport "__init__"
+.__init__ = pyimport "__init__"
+
+.func = pyimport "Funciones"
+.Funciones = pyimport "Funciones"
+
+.direccion_script: Never
+.Sonido: ClassType
+.Sonido.sonido: Never
+.Sonido.__call__: (objeto_sonido: Obj := Obj) -> Clases.Sonido
+.Sonido.reproducir: (self: Clases.Sonido) -> NoneType
+.Sonido.pausar: (self: Clases.Sonido) -> NoneType
+.Sonido.cambiar: (self: Clases.Sonido, objeto_sonido: Obj) -> NoneType
+
+.Pomodoro: ClassType
+.Pomodoro.tiempo_restante_actual: Never
+.Pomodoro.alarma: Never
+.Pomodoro.t_descanso: Never
+.Pomodoro.t_concentracion: Never
+.Pomodoro.n_ciclos: Never
+.Pomodoro.__call__: (t_concentracion: Obj := Obj, t_descanso: Obj := Obj, n_ciclos: Obj := Obj, direccion_a_alarma: Obj := Obj) -> Clases.Pomodoro
+.Pomodoro.definir_ciclos: (self: Clases.Pomodoro) -> NoneType
+.Pomodoro.pasar_ciclo: (self: Clases.Pomodoro) -> NoneType
+.Pomodoro.get_ciclo_actual: (self: Clases.Pomodoro) -> Never
+.Pomodoro.temporizador: |Type_7062 <: Structural({.lower = (self: Obj) -> Type_7218}), Type_7218: Type|(self: Clases.Pomodoro, etapa: Type_7062, duracion_min: Structural({.__mul__ = (self: Never, Obj) -> Never})) -> NoneType
+.Pomodoro.sonar_alarma: (self: Clases.Pomodoro) -> NoneType
+.Pomodoro.get_tiempo_restante_actual: (self: Clases.Pomodoro) -> Never
+

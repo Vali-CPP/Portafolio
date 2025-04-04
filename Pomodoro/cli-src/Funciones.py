@@ -2,7 +2,6 @@ import os, time
 import pygame as pg
 from Clases import *
 
-
 direccion_script = os.path.dirname(__file__)
 
 def limpiar_pantalla():
